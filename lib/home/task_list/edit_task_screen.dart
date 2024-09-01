@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app_project/app_colors.dart';
+import 'package:todo_app_project/model/task.dart';
+import 'package:todo_app_project/providers/list_provider.dart';
+import 'package:todo_app_project/providers/user_provider.dart';
 
 class EditTaskScreen extends StatefulWidget {
-  final String currentTitle;
-  final String currentDescription;
-  final DateTime currentDate;
-
+  final Task task;  // Add this line to accept the task object
   static final formKey = GlobalKey<FormState>();
 
-  EditTaskScreen({
-    required this.currentTitle,
-    required this.currentDescription,
-    required this.currentDate,
-  });
+  EditTaskScreen({required this.task});
 
   @override
   _EditTaskScreenState createState() => _EditTaskScreenState();
@@ -27,14 +24,14 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   @override
   void initState() {
     super.initState();
-    titleController = TextEditingController(text: widget.currentTitle);
-    descriptionController =
-        TextEditingController(text: widget.currentDescription);
-    selectedDate = widget.currentDate;
+    titleController = TextEditingController(text: widget.task.title);
+    descriptionController = TextEditingController(text: widget.task.description);
+    selectedDate = widget.task.dateTime;  // Ensure the date is initialized correctly
   }
 
   @override
   Widget build(BuildContext context) {
+    var listProvider = Provider.of<ListProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -59,8 +56,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                         controller: titleController,
                         decoration: InputDecoration(
                           hintText: 'Enter task title',
-                          hintStyle:
-                              TextStyle(color: Colors.grey, fontSize: 16),
+                          hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                         ),
                         style: TextStyle(color: Colors.black, fontSize: 16),
                         validator: (text) {
@@ -77,8 +73,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                         controller: descriptionController,
                         decoration: InputDecoration(
                           hintText: 'Enter task description',
-                          hintStyle:
-                              TextStyle(color: Colors.grey, fontSize: 16),
+                          hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                         ),
                         style: TextStyle(color: Colors.black, fontSize: 16),
                         validator: (text) {
@@ -104,10 +99,8 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (EditTaskScreen.formKey.currentState?.validate() ==
-                            true) {
-                          saveChanges(titleController.text,
-                              descriptionController.text, selectedDate);
+                        if (EditTaskScreen.formKey.currentState?.validate() == true) {
+                          saveChanges(listProvider);
                         }
                       },
                       child: Text(
@@ -143,9 +136,16 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     }
   }
 
-  void saveChanges(String title, String description, DateTime date) {
-    print('Title: $title, Description: $description, Date: $date');
+  void saveChanges(ListProvider listProvider) {
+    var userProvider = Provider.of<UserProvider>(context,listen: false);
+    final updatedTask = Task(
+      id: widget.task.id, // Ensure you maintain the same ID
+      title: titleController.text,
+      description: descriptionController.text,
+      dateTime: selectedDate,
+    );
 
-    Navigator.of(context).pop();
+    listProvider.updateTaskInFireStore(updatedTask,userProvider.currentUser!.id); // Update the task in Firebase
+    Navigator.of(context).pop(); // Close the screen
   }
 }
