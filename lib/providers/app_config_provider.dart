@@ -17,7 +17,7 @@ class AppConfigProvider extends ChangeNotifier {
     notifyListeners();
 
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString('languageCode', appLanguage);
+    prefs.setString('languageCode', appLanguage,);
   }
 
   void changeTheme(ThemeMode newMode) async{

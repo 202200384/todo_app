@@ -14,7 +14,7 @@ class Task{
     title:data['title'] ,
     dateTime:DateTime.fromMillisecondsSinceEpoch(data['dateTime']) ,
     description:data['description'],
-    isDone: data['isDone']
+    isDone: data['isDone'],
   );
 
   Map<String,dynamic>toFireStore(){

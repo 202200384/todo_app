@@ -6,6 +6,7 @@ class UserProvider extends ChangeNotifier{
 
   void updateUser(MyUser newUser){
     currentUser = newUser;
+
     notifyListeners();
   }
 }

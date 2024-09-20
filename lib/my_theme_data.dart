@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app_project/app_colors.dart';
 
 class MyThemeData {
+
   static final ThemeData lightTheme = ThemeData(
       primaryColor: AppColors.primaryColor,
       scaffoldBackgroundColor: AppColors.backgroundLightColor,

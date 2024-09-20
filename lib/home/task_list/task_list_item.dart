@@ -106,7 +106,7 @@ class TaskListItem extends StatelessWidget {
                     size: 35,
                     color: AppColors.whiteColor,
                   ),
-                )
+                ),
               ],
             ),
           ),

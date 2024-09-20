@@ -4,6 +4,7 @@ import 'package:todo_app_project/firebase_utils.dart';
 import 'package:todo_app_project/model/task.dart';
 
 class ListProvider extends ChangeNotifier{
+
   List<Task> taskList = [];
   var selectDate = DateTime.now();
 

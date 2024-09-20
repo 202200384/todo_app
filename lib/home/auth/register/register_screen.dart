@@ -127,6 +127,7 @@ var formKey = GlobalKey<FormState>();
             });
 
         print(credential.user?.uid??"");
+
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           DialogUtils.hideLoading(context);

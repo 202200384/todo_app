@@ -100,7 +100,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                     ElevatedButton(
                       onPressed: () {
                         if (EditTaskScreen.formKey.currentState?.validate() == true) {
-                          saveChanges(listProvider);
+                          SaveChanges(listProvider);
                         }
                       },
                       child: Text(
@@ -136,7 +136,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     }
   }
 
-  void saveChanges(ListProvider listProvider) {
+  void SaveChanges(ListProvider listProvider) {
     var userProvider = Provider.of<UserProvider>(context,listen: false);
     final updatedTask = Task(
       id: widget.task.id, // Ensure you maintain the same ID

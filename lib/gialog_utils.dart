@@ -27,6 +27,7 @@ class DialogUtils {
   }
 
   static void showMessage({required BuildContext context,required String content,
+
   String title ='Title',
   String? posActionName, Function? posAction,String? negActionName,Function? negAction}){
     List<Widget> actions = [];

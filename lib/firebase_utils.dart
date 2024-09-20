@@ -3,6 +3,7 @@ import 'package:todo_app_project/model/my_user.dart';
 import 'package:todo_app_project/model/task.dart';
 
 class FirebaseUtils{
+
   static CollectionReference<Task> getTasksCollection(String uId){
     return getUsersCollection().doc(uId)
     .collection(Task.collectionName).withConverter<Task>(

@@ -7,6 +7,7 @@ import 'package:todo_app_project/home/settings/theme_bottom_sheet.dart';
 import 'package:todo_app_project/providers/app_config_provider.dart';
 
 class SettingsTab extends StatefulWidget {
+
   @override
   State<SettingsTab> createState() => _SettingsTabState();
 }

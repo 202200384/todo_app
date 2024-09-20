@@ -97,7 +97,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        addTask();
+                        AddTask();
                       },
                       child: Text('Add',
                           style: Theme.of(context).textTheme.bodyLarge),
@@ -112,7 +112,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
     );
   }
 
-  void addTask() {
+  void AddTask() {
     if (AddTaskBottomSheet.formKey.currentState?.validate() == true) {
       var userProvider = Provider.of<UserProvider>(context,listen: false);
       Task task = Task(

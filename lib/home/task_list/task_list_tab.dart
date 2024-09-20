@@ -38,7 +38,7 @@ class _TaskListTabState extends State<TaskListTab> {
               dayStructure: DayStructure.dayStrDayNum,
               activeDayStyle: DayStyle(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderRadius: BorderRadius.all(Radius.circular(8),),
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,

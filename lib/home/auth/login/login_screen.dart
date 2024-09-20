@@ -62,6 +62,7 @@ class LoginScreen extends StatelessWidget {
                         if(text == null || text.trim().isEmpty){
                           return 'please enter password';
                         }
+
                         if(text.length<6){
                           return 'password must be at least 6 chars.';
                         }

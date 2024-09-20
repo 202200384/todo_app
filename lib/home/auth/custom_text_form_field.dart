@@ -17,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(color:
+
           AppColors.primaryColor,
           fontSize: 14,
           fontWeight: FontWeight.w500),

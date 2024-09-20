@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             listProvider.taskList = [];
             Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
           },
-              icon: Icon(Icons.logout))
+              icon: Icon(Icons.logout),)
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
